@@ -1,2 +1,2 @@
-# PanoDiff
- Genearating High Quality Panoramic Radiographs for Dental Xrays
+# Test samples
+Images generated at runtime are saved here.
