@@ -1,2 +1,2 @@
-# PanoDiff
- Genearating High Quality Panoramic Radiographs for Dental Xrays
+# Results
+This folder is generated at runtime to save visualisations of high-res images.
