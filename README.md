@@ -13,3 +13,5 @@ All pretrained models and project files can be requested at sanyam.jain@dent.au.
 ![image](https://github.com/user-attachments/assets/12d3f8be-0af2-4033-ba97-4e52908e8544)
 
 ![image](https://github.com/user-attachments/assets/bbd53d11-faff-4d5a-b2ce-523651d3f692)
+
+![image](https://github.com/user-attachments/assets/a1d4451a-90b0-46d9-9492-a529e67b0f15)
