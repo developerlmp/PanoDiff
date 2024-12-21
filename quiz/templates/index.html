@@ -330,6 +330,7 @@
                             <th>Zoom Percentage</th>
                             <th>Confidence Value</th>
                             <th>Real vs Fake</th>
+                            <th>Progress Percentage</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -339,6 +340,7 @@
                             <td id="zoom-value">N/A</td>
                             <td id="confidence-label-tb">N/A</td>
                             <td id="real-fake-value">N/A</td>
+                            <td id="progress-percentage-tb">N/A</td>
                         </tr>
                     </tbody>
                 </table>
@@ -515,12 +517,13 @@
     
             const folder = "100px";
             const file = images[currentIndex] ? images[currentIndex].split('/').pop() : "N/A";
-    
+            const progressValue = document.getElementById("progress-percentage").innerText;
             document.getElementById('folder-value').innerText = folder;
             document.getElementById('file-value').innerText = file;
             document.getElementById('zoom-value').innerText = `${zoomPercentage}%`;
             document.getElementById('confidence-label-tb').innerText = confidenceValue;
             document.getElementById('real-fake-value').innerText = selectedRealFake;
+            document.getElementById('progress-percentage-tb').innerText = progressValue;
     
             document.getElementById('table-container').style.display = 'block';
         }
