@@ -351,6 +351,9 @@
     <footer>
         <p>&copy; 2024 Image Quiz App. All rights reserved. Code by Sanyam Jain.</p>
     </footer>
+
+    
+    
     <script>
         let currentIndex = 0; // Track the current image index
         let selectedRealFake = null;
@@ -509,26 +512,70 @@
         }
 
     
+        // function submitSelection() {
+        //     if (!selectedRealFake) {
+        //         alert("Please select Real or Fake.");
+        //         return;
+        //     }
+    
+        //     const folder = "100px";
+        //     const file = images[currentIndex] ? images[currentIndex].split('/').pop() : "N/A";
+        //     const progressValue = document.getElementById("progress-percentage").innerText;
+        //     document.getElementById('folder-value').innerText = folder;
+        //     document.getElementById('file-value').innerText = file;
+        //     document.getElementById('zoom-value').innerText = `${zoomPercentage}%`;
+        //     document.getElementById('confidence-label-tb').innerText = confidenceValue;
+        //     document.getElementById('real-fake-value').innerText = selectedRealFake;
+        //     document.getElementById('progress-percentage-tb').innerText = progressValue;
+    
+        //     document.getElementById('table-container').style.display = 'block';
+        // }
+        
         function submitSelection() {
             if (!selectedRealFake) {
                 alert("Please select Real or Fake.");
                 return;
             }
-    
+
             const folder = "100px";
             const file = images[currentIndex] ? images[currentIndex].split('/').pop() : "N/A";
             const progressValue = document.getElementById("progress-percentage").innerText;
+            const zoomValue = `${zoomPercentage}%`;
+            // const confidenceValue = document.getElementById("confidence-label-tb").innerText;
+            const realFakeValue = selectedRealFake;
+
+            // Update the table values
             document.getElementById('folder-value').innerText = folder;
             document.getElementById('file-value').innerText = file;
-            document.getElementById('zoom-value').innerText = `${zoomPercentage}%`;
+            document.getElementById('zoom-value').innerText = zoomValue;
             document.getElementById('confidence-label-tb').innerText = confidenceValue;
-            document.getElementById('real-fake-value').innerText = selectedRealFake;
+            document.getElementById('real-fake-value').innerText = realFakeValue;
             document.getElementById('progress-percentage-tb').innerText = progressValue;
-    
+
             document.getElementById('table-container').style.display = 'block';
+
+            // Send the data to the backend
+            const tableData = {
+                folder: folder,
+                file: file,
+                zoomValue: zoomValue,
+                confidenceValue: confidenceValue,
+                realFakeValue: realFakeValue,
+                progressValue: progressValue
+            };
+
+            fetch('/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(tableData)
+            })
+            .then(response => response.json())
+            .then(data => console.log("Data sent to server:", data))
+            .catch(error => console.error("Error sending data to server:", error));
         }
+
     </script>
-    
+
     
     
     

@@ -1,4 +1,6 @@
 import os
+import firebase_admin
+from firebase_admin import credentials, firestore
 from flask import Flask, render_template, jsonify, request
 from pyngrok import ngrok
 
@@ -33,6 +35,47 @@ def get_images():
     return jsonify(images)
 
 
+
+# Initialize Firebase Admin SDK
+cred = credentials.Certificate("panodiff-42e4a-firebase-adminsdk-6a165-d68006a13b.json")  # Path to your Firebase service account key
+firebase_admin.initialize_app(cred)
+# Initialize Firestore client
+db = firestore.client()
+
+
+@app.route('/submit', methods=['POST'])
+def submit():
+    try:
+        # Parse the JSON data from the request
+        data = request.json
+
+        # Print the received data in the backend terminal
+        print("Received Data:")
+        print(f"Folder: {data.get('folder')}")
+        print(f"File: {data.get('file')}")
+        print(f"Zoom Value: {data.get('zoomValue')}")
+        print(f"Confidence Value: {data.get('confidenceValue')}")
+        print(f"Real/Fake Value: {data.get('realFakeValue')}")
+        print(f"Progress Value: {data.get('progressValue')}")
+
+        # Prepare data for Firestore document
+        document_data = {
+            'folder': data.get('folder'),
+            'file': data.get('file'),
+            'zoom_value': data.get('zoomValue'),
+            'confidence_value': data.get('confidenceValue'),
+            'real_fake_value': data.get('realFakeValue'),
+            'progress_value': data.get('progressValue')
+        }
+
+        # Store the data in Firestore
+        # Create a new document in a collection named "submissions"
+        db.collection('submissions').add(document_data)
+        print("Data written to Firestore Database")
+
+        return jsonify({"message": "Data received successfully"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 # Run the app
 if __name__ == '__main__':
