@@ -51,6 +51,7 @@ def submit():
 
         # Print the received data in the backend terminal
         print("Received Data:")
+        print(f"User Name: {data.get('userName')}")
         print(f"Folder: {data.get('folder')}")
         print(f"File: {data.get('file')}")
         print(f"Zoom Value: {data.get('zoomValue')}")
@@ -60,6 +61,7 @@ def submit():
 
         # Prepare data for Firestore document
         document_data = {
+            'user_name': data.get('userName'),
             'folder': data.get('folder'),
             'file': data.get('file'),
             'zoom_value': data.get('zoomValue'),

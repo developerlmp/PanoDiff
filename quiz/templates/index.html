@@ -285,6 +285,11 @@
                     Update Progress
                 </button>
             </div>
+            <div id="name-input-container" style="text-align: center; margin: 20px; color: white; font-size: 18px;">
+                <label for="name-input" style="margin-right: 10px;">Enter your name:</label>
+                <input type="text" id="name-input" placeholder="Your name" style="padding: 5px; font-size: 16px; width: 200px;" />
+            </div>
+            
             
             <div id="zoom-slider-container">
                 <label for="zoom-slider">Zoom: <span id="zoom-percentage">100%</span></label>
@@ -329,6 +334,7 @@
                 <table border="1">
                     <thead>
                         <tr>
+                            <th>User Name</th>
                             <th>Selected Folder</th>
                             <th>Selected File</th>
                             <th>Zoom Percentage</th>
@@ -339,6 +345,7 @@
                     </thead>
                     <tbody>
                         <tr>
+                            <td id="user-name-value">N/A</td>
                             <td id="folder-value">N/A</td>
                             <td id="file-value">N/A</td>
                             <td id="zoom-value">N/A</td>
@@ -364,7 +371,7 @@
         let zoomPercentage = 100;
         let confidenceValue = 5;
         let timerInterval = null; // Reference to the timer interval
-        const timerDuration = 10; // Timer duration in seconds
+        const timerDuration = 60; // Timer duration in seconds
         let timeRemaining = timerDuration;
         const images = []; // Array to hold image paths
         function loadImages() {
@@ -559,7 +566,7 @@
             const zoomValue = `${zoomPercentage}%`;
             // const confidenceValue = document.getElementById("confidence-label-tb").innerText;
             const realFakeValue = selectedRealFake;
-
+            const userName = document.getElementById('name-input').value;
             // Update the table values
             document.getElementById('folder-value').innerText = folder;
             document.getElementById('file-value').innerText = file;
@@ -567,17 +574,20 @@
             document.getElementById('confidence-label-tb').innerText = confidenceValue;
             document.getElementById('real-fake-value').innerText = realFakeValue;
             document.getElementById('progress-percentage-tb').innerText = progressValue;
-
+            document.getElementById('user-name-value').innerText = userName;
+            // user-name-value
             document.getElementById('table-container').style.display = 'block';
 
             // Send the data to the backend
             const tableData = {
+                userName: userName,
                 folder: folder,
                 file: file,
                 zoomValue: zoomValue,
                 confidenceValue: confidenceValue,
                 realFakeValue: realFakeValue,
-                progressValue: progressValue
+                progressValue: progressValue,
+                
             };
 
             fetch('/submit', {
