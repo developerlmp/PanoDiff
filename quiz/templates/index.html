@@ -285,9 +285,13 @@
                     Update Progress
                 </button>
             </div>
+            
             <div id="zoom-slider-container">
                 <label for="zoom-slider">Zoom: <span id="zoom-percentage">100%</span></label>
                 <input id="zoom-slider" type="range" min="100" max="500" step="50" value="100" oninput="adjustZoom()">
+            </div>
+            <div id="timer-container" style="text-align: center; margin: 20px; color: white; font-size: 18px;">
+                Timer: <span id="timer">00:10</span>
             </div>
             <div id="navigation-buttons">
                 <button id="next-button" 
@@ -359,6 +363,9 @@
         let selectedRealFake = null;
         let zoomPercentage = 100;
         let confidenceValue = 5;
+        let timerInterval = null; // Reference to the timer interval
+        const timerDuration = 10; // Timer duration in seconds
+        let timeRemaining = timerDuration;
         const images = []; // Array to hold image paths
         function loadImages() {
             const folder = "100px";
@@ -394,6 +401,7 @@
                 imageElement.src = images[currentIndex];
                 document.getElementById('file-name').textContent = `File: ${images[currentIndex].split('/').pop()}`;
                 updateZoom();
+                startTimer(); // Start the timer when an image is displayed
             } else {
                 clearImageDisplay();
             }
@@ -512,7 +520,32 @@
         }
 
     
+        function startTimer() {
+            timeRemaining = timerDuration;
+            updateTimerDisplay();
 
+            // Clear any existing timer interval
+            if (timerInterval) {
+                clearInterval(timerInterval);
+            }
+
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                updateTimerDisplay();
+
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    nextImage(); // Automatically move to the next image when the timer finishes
+                    startTimer(); // Restart the timer for the next image
+                }
+            }, 1000); // Update every second
+        }
+        function updateTimerDisplay() {
+            const timerElement = document.getElementById("timer");
+            const minutes = Math.floor(timeRemaining / 60);
+            const seconds = timeRemaining % 60;
+            timerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
         
         function submitSelection() {
             if (!selectedRealFake) {
