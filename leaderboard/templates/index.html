@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Submissions Dashboard</h1>
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th>User Name</th>
+                <th>Folder</th>
+                <th>File</th>
+                <th>Zoom Value</th>
+                <th>Confidence Value</th>
+                <th>Real/Fake Value</th>
+                <th>Progress Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be populated dynamically -->
+        </tbody>
+    </table>
+
+    <script>
+        // Fetch data from the server and populate the table
+        fetch('/get-data')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.querySelector("#data-table tbody");
+                tableBody.innerHTML = ""; // Clear existing data
+
+                data.forEach(item => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${item.user_name || 'N/A'}</td>
+                        <td>${item.folder || 'N/A'}</td>
+                        <td>${item.file || 'N/A'}</td>
+                        <td>${item.zoom_value || 'N/A'}</td>
+                        <td>${item.confidence_value || 'N/A'}</td>
+                        <td>${item.real_fake_value || 'N/A'}</td>
+                        <td>${item.progress_value || 'N/A'}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => {
+                console.error("Error fetching data:", error);
+            });
+    </script>
+</body>
+</html>
