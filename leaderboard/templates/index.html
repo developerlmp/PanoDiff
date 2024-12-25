@@ -6,73 +6,136 @@
     <title>Dashboard</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f4f4f4;
-        }
-        h1 {
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
             text-align: center;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        main {
+            margin: 20px auto;
+            max-width: 80%;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .leaderboard {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .leaderboard-chip {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            background-color: #f1f1f1;
+            border-radius: 25px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+            transition: transform 0.2s;
+        }
+
+        .leaderboard-chip:hover {
+            transform: scale(1.02);
+        }
+
+        .chip-rank {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .chip-details {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .chip-user {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .chip-accuracy {
+            font-size: 1rem;
+            color: #555;
+            margin-left: auto;
+        }
+
+        .no-data {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #777;
         }
     </style>
 </head>
 <body>
-    <h1>Submissions Dashboard</h1>
-    <table id="data-table">
-        <thead>
-            <tr>
-                <th>User Name</th>
-                <th>Folder</th>
-                <th>File</th>
-                <th>Zoom Value</th>
-                <th>Confidence Value</th>
-                <th>Real/Fake Value</th>
-                <th>Progress Value</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Data will be populated dynamically -->
-        </tbody>
-    </table>
-
+    <header>
+        <h1>PanoDiff Leaderboard</h1>
+    </header>
+    <main>
+        <div id="leaderboard" class="leaderboard">
+            <!-- Leaderboard data will be populated here -->
+        </div>
+    </main>
     <script>
-        // Fetch data from the server and populate the table
-        fetch('/get-data')
-            .then(response => response.json())
-            .then(data => {
-                const tableBody = document.querySelector("#data-table tbody");
-                tableBody.innerHTML = ""; // Clear existing data
+        async function fetchLeaderboard() {
+            try {
+                // Fetch leaderboard data from the server
+                const response = await fetch('/get-data');
+                const leaderboard = await response.json();
+                console.log("Leaderboard Data:", leaderboard); // Debugging: Log leaderboard data
 
-                data.forEach(item => {
-                    const row = document.createElement("tr");
-                    row.innerHTML = `
-                        <td>${item.user_name || 'N/A'}</td>
-                        <td>${item.folder || 'N/A'}</td>
-                        <td>${item.file || 'N/A'}</td>
-                        <td>${item.zoom_value || 'N/A'}</td>
-                        <td>${item.confidence_value || 'N/A'}</td>
-                        <td>${item.real_fake_value || 'N/A'}</td>
-                        <td>${item.progress_value || 'N/A'}</td>
+                // Populate the leaderboard
+                const leaderboardContainer = document.querySelector("#leaderboard");
+                leaderboardContainer.innerHTML = ""; // Clear existing content
+
+                leaderboard.forEach((entry, index) => {
+                    const chip = document.createElement("div");
+                    chip.className = "leaderboard-chip";
+                    chip.innerHTML = `
+                        <div class="chip-details">
+                            <div class="chip-rank">${index + 1}</div>
+                            <div class="chip-user">${entry.user}</div>
+                        </div>
+                        <div class="chip-accuracy">${entry.accuracy}%</div>
                     `;
-                    tableBody.appendChild(row);
+                    leaderboardContainer.appendChild(chip);
                 });
-            })
-            .catch(error => {
-                console.error("Error fetching data:", error);
-            });
+            } catch (error) {
+                console.error("Error fetching leaderboard data:", error);
+            }
+        }
+
+        // Fetch leaderboard data on page load
+        document.addEventListener("DOMContentLoaded", fetchLeaderboard);
     </script>
 </body>
 </html>
