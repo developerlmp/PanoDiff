@@ -8,7 +8,9 @@ from pyngrok import ngrok
 app = Flask(__name__)
 
 # Set the Ngrok auth token (ensure you have your token here)
-ngrok.set_auth_token("2rz05j4SFJLrSt48IWnNIXSmWgd_6vjhry8PfRZjHQRDgARYQ") # iitj ID
+# ngrok.set_auth_token("2rz05j4SFJLrSt48IWnNIXSmWgd_6vjhry8PfRZjHQRDgARYQ") # iitj ID
+ngrok.set_auth_token("2rCwoeKgi6HnP4qUe7I5deCyE5P_67CjVfTeujyRKYMyj9BH1") # AU ID
+
 
 # Open an HTTP tunnel on the specified port
 PORT = 8050
@@ -58,6 +60,7 @@ def submit():
         print(f"Confidence Value: {data.get('confidenceValue')}")
         print(f"Real/Fake Value: {data.get('realFakeValue')}")
         print(f"Progress Value: {data.get('progressValue')}")
+        print(f"Slider Value: {data.get('realFakeValueSlider')}")
 
         # Prepare data for Firestore document
         document_data = {
@@ -67,7 +70,8 @@ def submit():
             'zoom_value': data.get('zoomValue'),
             'confidence_value': data.get('confidenceValue'),
             'real_fake_value': data.get('realFakeValue'),
-            'progress_value': data.get('progressValue')
+            'progress_value': data.get('progressValue'),
+            'realFakeValueSlider': data.get('realFakeValueSlider')
         }
 
         # Store the data in Firestore

@@ -246,6 +246,55 @@
         label, #slider-value {
             font-size: 18px;
         }
+        #real-fake-slider::-webkit-slider-thumb {
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #007bff;
+        cursor: pointer;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+    }
+
+    #real-fake-slider::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #007bff;
+        cursor: pointer;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+    }
+
+    #real-fake-slider::-ms-thumb {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #007bff;
+        cursor: pointer;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+    }
+
+    #real-fake-slider::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 10px;
+        border-radius: 10px;
+        background: linear-gradient(90deg, #28a745 0%, #ffc107 50%, #dc3545 100%);
+    }
+
+    #real-fake-slider:focus::-webkit-slider-thumb {
+        background: #0056b3;
+    }
+
+    #real-fake-slider:focus::-moz-range-thumb {
+        background: #0056b3;
+    }
+
+    #real-fake-slider:focus::-ms-thumb {
+        background: #0056b3;
+    }
     </style>
 </head>
 <body>
@@ -325,12 +374,12 @@
 
             
             
-            <div id="buttons-container">
+            <!-- <div id="buttons-container">
                 <button id="real-button" class="category-button real-button" onclick="selectReal()">Real</button>
                 <button id="fake-button" class="category-button fake-button" onclick="selectFake()">Fake</button>
                 <button id="notsure-button" class="category-button notsure-button" onclick="selectNotSure()">Not Sure</button>
-            </div>
-            <p id="selected-value" style="color: rgb(0, 0, 0);">Selected: None</p>
+            </div> -->
+            <!-- <p id="selected-value" style="color: rgb(0, 0, 0);">Selected: None</p> -->
             <!-- <div id="navigation-buttons">
                 <button id="next-button" 
                     onmousedown="startSpeedNavigation()" 
@@ -338,6 +387,35 @@
                     onmouseleave="stopSpeedNavigation()">Next</button>
             </div> -->
      
+            
+            <div id="slider-container" style="margin-top: 20px; text-align: center;">
+                <label for="real-fake-slider" style="font-size: 18px; color: #333; font-weight: bold; margin-bottom: 10px; display: block;">
+                    Select Real or Fake:
+                </label>
+                <input 
+                    type="range" 
+                    id="real-fake-slider" 
+                    min="1" 
+                    max="5" 
+                    value="3" 
+                    step="1" 
+                    oninput="updateSliderLabel()" 
+                    style="
+                        width: 80%; 
+                        margin: 10px auto; 
+                        appearance: none; 
+                        background: #ddd; 
+                        height: 10px; 
+                        border-radius: 10px; 
+                        outline: none; 
+                        cursor: pointer;">
+                <p id="slider-label" style="font-size: 18px; color: #007bff; font-weight: bold; margin-top: 10px;">
+                    Unsure
+                </p>
+            </div>
+
+
+
 
             <div id="submit-container">
                 <button id="submit-button" onclick="submitSelection()">Submit</button>
@@ -596,6 +674,40 @@
             document.getElementById("10s-complete").innerText = "";
         }
 
+
+        function updateSliderLabel() {
+            const slider = document.getElementById('real-fake-slider');
+            const label = document.getElementById('slider-label');
+            const value = parseInt(slider.value);
+            let description = '';
+
+            switch (value) {
+                case 1:
+                    description = 'Real';
+                    break;
+                case 2:
+                    description = '~Real';
+                    break;
+                case 3:
+                    description = 'Unsure';
+                    break;
+                case 4:
+                    description = '~Fake';
+                    break;
+                case 5:
+                    description = 'Fake';
+                    break;
+            }
+
+            label.innerText = `${description}`;
+        }
+
+        function resetSlider() {
+            const slider = document.getElementById('real-fake-slider');
+            slider.value = 3; // Reset slider value to 3
+            updateSliderLabel(); // Update the label to match the reset value
+        }
+
         function submitSelection() {
             
             if (!selectedRealFake) {
@@ -609,6 +721,7 @@
             const progressValue = document.getElementById("progress-percentage").innerText;
             // const confidenceValue = document.getElementById("confidence-label-tb").innerText;
             const realFakeValue = selectedRealFake;
+            const realFakeValueSlider = document.getElementById('slider-label').innerText;
             const userName = document.getElementById('name-input').value;
             if (!userName) {
                 alert("Please enter username.");
@@ -619,6 +732,8 @@
             document.getElementById('real-fake-value').innerText = realFakeValue;
             document.getElementById('progress-percentage-tb').innerText = progressValue;
             document.getElementById('user-name-value').innerText = userName;
+            document.getElementById('slider-label').innerText = realFakeValueSlider;
+            
             // user-name-value
             document.getElementById('table-container').style.display = 'block';
 
@@ -628,6 +743,7 @@
                 file: file,
                 realFakeValue: realFakeValue,
                 progressValue: progressValue,
+                realFakeValueSlider: realFakeValueSlider,
                 
             };
             nextImage();
@@ -641,6 +757,7 @@
             .then(data => console.log("Data sent to server:", data))
             .catch(error => console.error("Error sending data to server:", error));
             document.getElementById("table-container").style.display = "none"; // Hide the table after submission, delete this line if you want to keep the table visible
+            resetSlider();
             
         }
         
