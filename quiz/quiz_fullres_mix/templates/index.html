@@ -315,7 +315,7 @@
                 <span id="timer">00:10</span>
             </div>
             
-            <div id="progress-percentage" style="color: #ffffff;">Progress: 0.00000%</div>
+            <div id="progress-percentage" style="color: #000000;">Progress: 0.00000%</div>
             <div id="10s-complete" style="color: #ffeb38;"></div>
             <div id="every25image-minibreak" style="color: #ffeb38;"></div>
             <!-- <div id="break-reminder" style="display: none; margin-top: 10px; color: rgb(252, 208, 13);">
@@ -444,7 +444,7 @@
             if (images.length > 0) {
                 const progress = ((currentIndex+1) / images.length) * 100;
                 document.getElementById("progress-percentage").innerText = `Progress: ${progress.toFixed(3)}%`;
-                if(progress === 0){
+                if(progress === 0.500) {
                     setTimeout(() => {
                         alert("Welcome to the quiz! Press ok to start🚀🚀🚀");
                     }, 300);
