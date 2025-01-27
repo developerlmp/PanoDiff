@@ -74,9 +74,9 @@ import pandas as pd
 
 # Paths to source directories
 source1 = "FakeImages"  # Fake Images Dataset
-source2 = "OriginalImages"  # Real Training Images Dataset
-destination = "fullres"  # Destination directory where images will be saved
-destination_separated = "fullres_separated"  # Destination directory with 'fake' and 'real' subfolders
+source2 = "OriginalImages_Processed_25selections_final"  # Real Training Images Dataset
+destination = "OriginalImages_Processed_25selections_final_fullres"  # Destination directory where images will be saved
+destination_separated = "OriginalImages_Processed_25selections_final_fullres_separated"  # Destination directory with 'fake' and 'real' subfolders
 root = "."  # Root directory for CSV file
 
 # Step 1: Read all images in fake images and real images directory
@@ -129,7 +129,7 @@ for idx, img in enumerate(combined):
 
 # Step 4: Create CSV file with filenames and labels
 df = pd.DataFrame(renamed_images, columns=['Filename', 'Label'])
-csv_file = os.path.join(root, 'image_labels.csv')
+csv_file = os.path.join(root, 'OriginalImages_Processed_25selections_final_fullres_separated.csv')
 df.to_csv(csv_file, index=False)
 
 print(f"Processed {len(renamed_images)} images.")
