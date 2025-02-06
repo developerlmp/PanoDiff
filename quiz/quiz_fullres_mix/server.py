@@ -3,13 +3,13 @@ import firebase_admin
 from firebase_admin import credentials, firestore
 from flask import Flask, render_template, jsonify, request
 from pyngrok import ngrok
-
+from natsort import natsorted
 # Initialize Flask app
 app = Flask(__name__)
 
 # Set the Ngrok auth token (ensure you have your token here)
 # ngrok.set_auth_token("2rz05j4SFJLrSt48IWnNIXSmWgd_6vjhry8PfRZjHQRDgARYQ") # iitj ID
-ngrok.set_auth_token("2rCwoeKgi6HnP4qUe7I5deCyE5P_67CjVfTeujyRKYMyj9BH1") # AU ID
+ngrok.set_auth_token("2rCwrD8WuljsKpx7ypx03wvnw5q_4sZT1zEPYFLhfWKtckLoH") # AU ID
 
 
 # Open an HTTP tunnel on the specified port
@@ -33,7 +33,7 @@ def index():
 def get_images():
     folder = request.args.get('folder')
     image_dir = os.path.join('static', folder)
-    images = [f"/static/{folder}/{img}" for img in os.listdir(image_dir)]
+    images = [f"/static/{folder}/{img}" for img in natsorted(os.listdir(image_dir))]
     return jsonify(images)
 
 

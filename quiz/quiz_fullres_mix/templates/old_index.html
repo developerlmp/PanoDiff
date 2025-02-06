@@ -147,6 +147,10 @@
             background-color: red;
             color: white;
         }
+        .notsure-button {
+            background-color: rgb(114, 104, 104);
+            color: white;
+        }
 
         /* Selected button styles */
         .category-button.selected {
@@ -174,17 +178,18 @@
 
         #submit-button {
             padding: 10px 20px;
-            font-size: 16px;
-            background-color: #4CAF50;
+            font-size: 20px;
+            background-color: #1a17d6;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            width: 250px; /* Adjust width as needed */
         }
 
         #submit-button:hover {
-            background-color: #45a049;
+            background-color: #458ba0;
         }
 
         /* Style for the table */
@@ -241,6 +246,55 @@
         label, #slider-value {
             font-size: 18px;
         }
+        #real-fake-slider::-webkit-slider-thumb {
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #007bff;
+        cursor: pointer;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+    }
+
+    #real-fake-slider::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #007bff;
+        cursor: pointer;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+    }
+
+    #real-fake-slider::-ms-thumb {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #007bff;
+        cursor: pointer;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+    }
+
+    #real-fake-slider::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 10px;
+        border-radius: 10px;
+        background: linear-gradient(90deg, #28a745 0%, #ffc107 50%, #dc3545 100%);
+    }
+
+    #real-fake-slider:focus::-webkit-slider-thumb {
+        background: #0056b3;
+    }
+
+    #real-fake-slider:focus::-moz-range-thumb {
+        background: #0056b3;
+    }
+
+    #real-fake-slider:focus::-ms-thumb {
+        background: #0056b3;
+    }
     </style>
 </head>
 <body>
@@ -259,66 +313,124 @@
 
         <!-- Right Section: Configuration -->
         <section id="right-section">
-            <!-- <label for="folder-dropdown">Select Folder:</label> -->
-            
-            <!-- <select id="folder-dropdown" onchange="loadImages()">
-                <option value="">Select a Folder</option>
-                {% for folder in folders %}
-                    <option value="{{ folder }}">{{ folder }}</option>
-                {% endfor %}
-            </select> -->
-            <div style="margin: 20px 0; text-align: center;">
-                <label for="progress-input" style="color: white; font-size: 16px; font-weight: bold; margin-right: 10px;">
-                    Enter Progress (%):
+
+            <div 
+                id="name-input-container" 
+                style="
+                    text-align: center; 
+                    margin: 20px auto; 
+                    color: white; 
+                    font-size: 18px; 
+                    border: 2px solid #ffffff; 
+                    border-radius: 10px; 
+                    padding: 20px; 
+                    background-color: #000000; 
+                    width: 300px; 
+                    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);">
+                
+                <label for="name-input" 
+                    style="
+                        margin-right: 10px; 
+                        font-size: 18px; 
+                        color: #ffffff; 
+                        padding: 5px 10px; 
+                        border-radius: 5px;">
+                    Enter your name:
                 </label>
-                <input type="number" id="progress-input" 
-                       style="padding: 8px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px; width: 80px;" 
-                       min="0" max="100" step="0.1" placeholder="0-100">
-                <button onclick="jumpToProgress()" 
-                        style="padding: 8px 12px; background-color: #007BFF; color: white; border: none; 
-                               border-radius: 4px; font-size: 14px; cursor: pointer;">
-                    Update Progress
-                </button>
-            </div>
-            <div id="name-input-container" style="text-align: center; margin: 20px; color: white; font-size: 18px;">
-                <label for="name-input" style="margin-right: 10px;">Enter your name:</label>
-                <input type="text" id="name-input" placeholder="Your name" style="padding: 5px; font-size: 16px; width: 200px;" />
+
+                <input 
+                    type="text" 
+                    id="name-input" 
+                    placeholder="Enter your name" 
+                    style="
+                        padding: 10px; 
+                        font-size: 18px; 
+                        width: 250px; 
+                        border: 2px solid #ffffff; 
+                        border-radius: 8px; 
+                        background-color: #9da09e; 
+                        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); 
+                        color: #000000; 
+                        outline: none; 
+                        transition: border-color 0.3s ease, box-shadow 0.3s ease;"
+                    onfocus="this.style.borderColor='white'; this.style.boxShadow='0 0 5px #ff9800';" 
+                    onblur="this.style.borderColor='white'; this.style.boxShadow='2px 2px 5px rgba(0, 0, 0, 0.1)';"
+                />
+
+</div>
+
+
+            <div id="timer-container" style="text-align: center; margin: 20px; color: rgb(0, 0, 0); font-size: 18px;">
+                <span id="timer">00:10</span>
             </div>
             
-            
-            <div id="zoom-slider-container">
-                <label for="zoom-slider">Zoom: <span id="zoom-percentage">100%</span></label>
-                <input id="zoom-slider" type="range" min="100" max="500" step="50" value="100" oninput="adjustZoom()">
-            </div>
-            <div id="timer-container" style="text-align: center; margin: 20px; color: white; font-size: 18px;">
-                Timer: <span id="timer">00:10</span>
-            </div>
-            <div id="navigation-buttons">
-                <button id="next-button" 
-                    onmousedown="startSpeedNavigation()" 
-                    onmouseup="stopSpeedNavigation()" 
-                    onmouseleave="stopSpeedNavigation()">Next</button>
-            </div>
-            <div id="progress-percentage" style="color: #ccc;">Progress: 0.00000%</div>
+            <div id="progress-percentage" style="color: #000000;">Progress: 0.00000%</div>
+            <div id="10s-complete" style="color: #ffeb38;"></div>
+            <div id="every25image-minibreak" style="color: #ffeb38;"></div>
+            <!-- <div id="break-reminder" style="display: none; margin-top: 10px; color: rgb(252, 208, 13);">
+                
+              </div> -->
             <br>
 
             
             
-            <div id="buttons-container">
+
+
+
+
+            <!-- <div id="buttons-container">
                 <button id="real-button" class="category-button real-button" onclick="selectReal()">Real</button>
                 <button id="fake-button" class="category-button fake-button" onclick="selectFake()">Fake</button>
+                <button id="notsure-button" class="category-button notsure-button" onclick="selectNotSure()">Not Sure</button>
             </div>
-            <p id="selected-value" style="color: white;">Selected: None</p>
+            <p id="selected-value" style="color: rgb(0, 0, 0);">Selected: None</p> -->
+
+
+
+
+
+
+
+
+
             
-            <div id="slider-container">
-                <label for="range-slider">Confidence Value: <span id="confidence-label">Neutral</span></label>
-                <input id="range-slider" type="range" min="1" max="10" value="5" oninput="updateConfidenceLabel()">
-            </div>          
-            <!-- Display the Selected Value Below -->
-            <!-- <div id="selection-result">
-                <p id="selected-value">No value selected</p>
-            </div> -->
-            <!-- Submit button -->
+            <div id="slider-container" style="margin-top: 10px; width: 100%; text-align: center;">
+                <label for="real-fake-slider" style="font-size: 5px; color: #333; font-weight: bold; margin-bottom: 10px; display: block;">
+                    Select Real or Fake:
+                </label>
+                <input 
+                    type="range" 
+                    id="real-fake-slider" 
+                    min="1" 
+                    max="5" 
+                    value="3" 
+                    step="1" 
+                    oninput="updateSliderLabel()" 
+                    style="
+                        width: 80%; 
+                        margin: 10px auto; 
+                        appearance: none; 
+                        background: #ddd; 
+                        height: 10px; 
+                        border-radius: 10px; 
+                        outline: none; 
+                        cursor: pointer;">
+                 <div style="display: flex; justify-content: space-between; font-size: 15px; width: 100%; margin: 5px auto; font-size: 16px; font-weight: bold;">
+                    <span style="color: green;font-size: 15px;">Definitely Real &nbsp;</span>
+                    <span style="color: #cccc00;font-size: 15px;">Probably Real &nbsp;</span>
+                    <span style="color: gray;font-size: 15px;">Unsure &nbsp;</span>
+                    <span style="color: orange;font-size: 15px;">Probably Fake &nbsp;</span>
+                    <span style="color: red;font-size: 15px;">Definitely Fake &nbsp;</span>
+                </div>
+                <br/>
+                <p id="slider-label" style="font-size: 18px; color: #333; font-weight: bold; margin-top: 10px;">
+                    Unsure
+                </p>
+            </div>
+
+
+
+
             <div id="submit-container">
                 <button id="submit-button" onclick="submitSelection()">Submit</button>
             </div>
@@ -330,10 +442,7 @@
                     <thead>
                         <tr>
                             <th>User Name</th>
-                            <th>Selected Folder</th>
                             <th>Selected File</th>
-                            <th>Zoom Percentage</th>
-                            <th>Confidence Value</th>
                             <th>Real vs Fake</th>
                             <th>Progress Percentage</th>
                         </tr>
@@ -341,10 +450,7 @@
                     <tbody>
                         <tr>
                             <td id="user-name-value">N/A</td>
-                            <td id="folder-value">N/A</td>
                             <td id="file-value">N/A</td>
-                            <td id="zoom-value">N/A</td>
-                            <td id="confidence-label-tb">N/A</td>
                             <td id="real-fake-value">N/A</td>
                             <td id="progress-percentage-tb">N/A</td>
                         </tr>
@@ -364,9 +470,8 @@
         let currentIndex = 0; // Track the current image index
         let selectedRealFake = null;
         let zoomPercentage = 100;
-        let confidenceValue = 5;
         let timerInterval = null; // Reference to the timer interval
-        const timerDuration = 60; // Timer duration in seconds
+        const timerDuration = 13; // Timer duration in seconds
         let timeRemaining = timerDuration;
         const images = []; // Array to hold image paths
         function loadImages() {
@@ -395,6 +500,9 @@
                     console.error("Error fetching images:", error);
                 });
         }
+        
+
+
         window.onload = function() { loadImages(); };
     
         function displayImage() {
@@ -414,7 +522,7 @@
             imageElement.src = ''; // Clear the image
             document.getElementById('file-name').textContent = 'No image selected.';
         }
-    
+
         function prevImage() {
             if (currentIndex > 0) {
                 currentIndex--;
@@ -424,32 +532,39 @@
                 alert("You are already at the first image.");
             }
         }
-    
+        const progressInput = document.getElementById("progress");
+        const progressValue = document.getElementById("progress-value");
+        const breakReminder = document.getElementById("break-reminder");
         function updateProgress() {
             if (images.length > 0) {
-                const progress = ((currentIndex + 1) / images.length) * 100;
+                const progress = ((currentIndex+1) / images.length) * 100;
                 document.getElementById("progress-percentage").innerText = `Progress: ${progress.toFixed(3)}%`;
+                if(progress < 0.498) {
+                    setTimeout(() => {
+                        alert("Welcome to the quiz! Press ok to start🚀🚀🚀");
+                    }, 300);
+                } else if (currentIndex === 101) {
+                    clearImageDisplay(); // new
+                    setTimeout(() => {
+                        alert("You are halfway through the quiz. Please take a slightly longer break; press 'OK' when you are ready to continue. 🕒☕");
+                        displayImage(); // new
+                    }, 100);
+                } else if (currentIndex % 25 === 0 && currentIndex !== 200 && currentIndex !== 100) {
+                    clearImageDisplay(); // new
+                    setTimeout(() => {
+                        alert("Please take a second to relax your eyes 👀 and mind 🧘‍♀️; press 'OK' when you are ready to continue.✨");
+                        displayImage(); // new
+                    }, 100);
+                } else {
+                    document.getElementById("every25image-minibreak").innerText = "";
+                }
+
             } else {
                 document.getElementById("progress-percentage").innerText = "Progress: 0.00000%";
             }
         }
     
-        function jumpToProgress() {
-            const inputPercentage = parseFloat(document.getElementById("progress-input").value);
-            if (isNaN(inputPercentage) || inputPercentage < 0 || inputPercentage > 100) {
-                alert("Please enter a valid percentage (0-100).");
-                return;
-            }
-    
-            const targetIndex = Math.floor((inputPercentage / 100) * images.length) - 1;
-            if (targetIndex >= 0 && targetIndex < images.length) {
-                currentIndex = targetIndex;
-                displayImage();
-                updateProgress();
-            } else {
-                alert("Invalid percentage value. No corresponding image.");
-            }
-        }
+
     
         let speedNavigationInterval = null;
     
@@ -468,12 +583,21 @@
         }
     
         function nextImage() {
-            if (currentIndex < images.length - 1) {
+            if (currentIndex < images.length) {
                 currentIndex++;
                 displayImage();
                 updateProgress();
             } else {
-                alert("You are already at the last image.");
+                clearImageDisplay();
+                document.getElementById("10s-complete").remove();
+                document.getElementById("slider-container").remove();
+                document.getElementById("submit-container").remove();
+                document.getElementById("table-container").remove();
+                
+                setTimeout(() => {
+                    alert("You have completed the quiz! 🎉🎉🎉 You can safely exit the quiz and your inputs are recorded. Thanks for your time and effort.");
+                }, 300);
+                
                 stopSpeedNavigation();
             }
         }
@@ -489,41 +613,15 @@
             imageElement.style.transform = `scale(${zoomPercentage / 100})`;
         }
     
-        function updateConfidenceLabel() {
-            const slider = document.getElementById('range-slider');
-            const label = document.getElementById('confidence-label');
-            const confidenceLabels = [
-                'Completely unsure', 'Very unsure', 'Unsure', 'Somewhat unsure', 'Neutral',
-                'Somewhat sure', 'Sure', 'Very sure', 'Almost completely sure', 'Completely sure'
-            ];
-            const value = slider.value;
-            label.textContent = confidenceLabels[value - 1];
-            confidenceValue = label.textContent;
-        }
+
     
         
 
-        function selectReal() {
-            selectedRealFake = 'Real';
-            document.getElementById('selected-value').innerText = 'Selected: Real';
-
-            // Apply styles to the buttons
-            document.getElementById('real-button').classList.add('selected');
-            document.getElementById('fake-button').classList.remove('selected');
-        }
-
-        function selectFake() {
-            selectedRealFake = 'Fake';
-            document.getElementById('selected-value').innerText = 'Selected: Fake';
-
-            // Apply styles to the buttons
-            document.getElementById('fake-button').classList.add('selected');
-            document.getElementById('real-button').classList.remove('selected');
-        }
-
+        
     
         function startTimer() {
-            timeRemaining = timerDuration;
+            timeRemaining = (currentIndex === 0) ? 45 : 13; // Set 45 seconds for first image, 13 otherwise
+            // timeRemaining = timerDuration;
             updateTimerDisplay();
 
             // Clear any existing timer interval
@@ -537,8 +635,13 @@
 
                 if (timeRemaining <= 0) {
                     clearInterval(timerInterval);
-                    nextImage(); // Automatically move to the next image when the timer finishes
-                    startTimer(); // Restart the timer for the next image
+                    clearImageDisplay();
+                    setTimeout(() => {
+                        document.getElementById("10s-complete").innerText = "Times up ⏰, please select an option and click submit ✅ to load next image.";
+                    }, 100);
+                    
+                    // nextImage(); // Automatically move to the next image when the timer finishes
+                    // startTimer(); // Restart the timer for the next image
                 }
             }, 1000); // Update every second
         }
@@ -549,42 +652,91 @@
             timerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
         }
         
-        function submitSelection() {
-            if (!selectedRealFake) {
-                alert("Please select Real or Fake.");
-                return;
+        // function clearSelection() {
+        //     selectedRealFake = null;
+        //     document.getElementById('selected-value').innerText = 'Selected: None';
+
+        //     // Remove the selected styles from the buttons
+        //     document.getElementById('real-button').classList.remove('selected');
+        //     document.getElementById('fake-button').classList.remove('selected');
+        //     document.getElementById('notsure-button').classList.remove('selected');
+        //     document.getElementById("10s-complete").innerText = "";
+        // }
+
+
+        function updateSliderLabel() {
+            const slider = document.getElementById('real-fake-slider');
+            const label = document.getElementById('slider-label');
+            const value = parseInt(slider.value);
+            let description = '';
+
+            switch (value) {
+                case 1:
+                    description = 'Definitely Real';
+                    break;
+                case 2:
+                    description = 'Probably Real';
+                    break;
+                case 3:
+                    description = 'Unsure';
+                    break;
+                case 4:
+                    description = 'Probably Fake';
+                    break;
+                case 5:
+                    description = 'Definitely Fake';
+                    break;
             }
 
-            const folder = "fullres";
+            label.innerText = `${description}`;
+        }
+
+        function resetSlider() {
+            const slider = document.getElementById('real-fake-slider');
+            slider.value = 3; // Reset slider value to 3
+            updateSliderLabel(); // Update the label to match the reset value
+        }
+
+        function submitSelection() {
+            
+            // if (!selectedRealFake) {
+            //     alert("Please select Real or Fake.");
+            //     return;
+            // }
+            
+            
+            
             const file = images[currentIndex] ? images[currentIndex].split('/').pop() : "N/A";
             const progressValue = document.getElementById("progress-percentage").innerText;
-            const zoomValue = `${zoomPercentage}%`;
             // const confidenceValue = document.getElementById("confidence-label-tb").innerText;
             const realFakeValue = selectedRealFake;
+            const realFakeValueSlider = document.getElementById('slider-label').innerText;
             const userName = document.getElementById('name-input').value;
+            if (!userName) {
+                alert("Please enter username.");
+                return;
+            }
             // Update the table values
-            document.getElementById('folder-value').innerText = folder;
             document.getElementById('file-value').innerText = file;
-            document.getElementById('zoom-value').innerText = zoomValue;
-            document.getElementById('confidence-label-tb').innerText = confidenceValue;
-            document.getElementById('real-fake-value').innerText = realFakeValue;
+            document.getElementById('real-fake-value').innerText = realFakeValueSlider;
             document.getElementById('progress-percentage-tb').innerText = progressValue;
             document.getElementById('user-name-value').innerText = userName;
+            document.getElementById('slider-label').innerText = realFakeValueSlider;
+            
             // user-name-value
             document.getElementById('table-container').style.display = 'block';
 
             // Send the data to the backend
             const tableData = {
                 userName: userName,
-                folder: folder,
                 file: file,
-                zoomValue: zoomValue,
-                confidenceValue: confidenceValue,
-                realFakeValue: realFakeValue,
                 progressValue: progressValue,
+                realFakeValueSlider: realFakeValueSlider,
                 
             };
-
+            nextImage();
+            // clearSelection();
+            document.getElementById("10s-complete").innerText = "";
             fetch('/submit', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -593,7 +745,15 @@
             .then(response => response.json())
             .then(data => console.log("Data sent to server:", data))
             .catch(error => console.error("Error sending data to server:", error));
+            document.getElementById("table-container").style.display = "none"; // Hide the table after submission, delete this line if you want to keep the table visible
+            resetSlider();
+            
         }
+        
+
+
+
+
 
     </script>
 

@@ -31,5 +31,5 @@ def delete_entries_by_username(user_name):
         print(f"An error occurred: {e}")
 
 # Specify the username to delete
-username_to_delete = "sanyam"  # Replace with the username you want to delete
+username_to_delete = "temp"  # Replace with the username you want to delete
 delete_entries_by_username(username_to_delete)

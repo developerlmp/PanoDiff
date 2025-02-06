@@ -374,22 +374,28 @@
 
             
             
+
+
+
+
             <!-- <div id="buttons-container">
                 <button id="real-button" class="category-button real-button" onclick="selectReal()">Real</button>
                 <button id="fake-button" class="category-button fake-button" onclick="selectFake()">Fake</button>
                 <button id="notsure-button" class="category-button notsure-button" onclick="selectNotSure()">Not Sure</button>
-            </div> -->
-            <!-- <p id="selected-value" style="color: rgb(0, 0, 0);">Selected: None</p> -->
-            <!-- <div id="navigation-buttons">
-                <button id="next-button" 
-                    onmousedown="startSpeedNavigation()" 
-                    onmouseup="stopSpeedNavigation()" 
-                    onmouseleave="stopSpeedNavigation()">Next</button>
-            </div> -->
-     
+            </div>
+            <p id="selected-value" style="color: rgb(0, 0, 0);">Selected: None</p> -->
+
+
+
+
+
+
+
+
+
             
-            <div id="slider-container" style="margin-top: 20px; text-align: center;">
-                <label for="real-fake-slider" style="font-size: 18px; color: #333; font-weight: bold; margin-bottom: 10px; display: block;">
+            <div id="slider-container" style="margin-top: 10px; width: 100%; text-align: center;">
+                <label for="real-fake-slider" style="font-size: 5px; color: #333; font-weight: bold; margin-bottom: 10px; display: block;">
                     Select Real or Fake:
                 </label>
                 <input 
@@ -409,7 +415,15 @@
                         border-radius: 10px; 
                         outline: none; 
                         cursor: pointer;">
-                <p id="slider-label" style="font-size: 18px; color: #007bff; font-weight: bold; margin-top: 10px;">
+                 <div style="display: flex; justify-content: space-between; font-size: 15px; width: 100%; margin: 5px auto; font-size: 16px; font-weight: bold;">
+                    <span style="color: green;font-size: 15px;">Definitely Real &nbsp;</span>
+                    <span style="color: #cccc00;font-size: 15px;">Probably Real &nbsp;</span>
+                    <span style="color: gray;font-size: 15px;">Unsure &nbsp;</span>
+                    <span style="color: orange;font-size: 15px;">Probably Fake &nbsp;</span>
+                    <span style="color: red;font-size: 15px;">Definitely Fake &nbsp;</span>
+                </div>
+                <br/>
+                <p id="slider-label" style="font-size: 18px; color: #333; font-weight: bold; margin-top: 10px;">
                     Unsure
                 </p>
             </div>
@@ -457,7 +471,7 @@
         let selectedRealFake = null;
         let zoomPercentage = 100;
         let timerInterval = null; // Reference to the timer interval
-        const timerDuration = 10; // Timer duration in seconds
+        const timerDuration = 13; // Timer duration in seconds
         let timeRemaining = timerDuration;
         const images = []; // Array to hold image paths
         function loadImages() {
@@ -486,6 +500,9 @@
                     console.error("Error fetching images:", error);
                 });
         }
+        
+
+
         window.onload = function() { loadImages(); };
     
         function displayImage() {
@@ -522,17 +539,17 @@
             if (images.length > 0) {
                 const progress = ((currentIndex+1) / images.length) * 100;
                 document.getElementById("progress-percentage").innerText = `Progress: ${progress.toFixed(3)}%`;
-                if(progress === 0.500) {
+                if(progress < 0.498) {
                     setTimeout(() => {
                         alert("Welcome to the quiz! Press ok to start🚀🚀🚀");
                     }, 300);
-                } else if (progress === 50) {
+                } else if (currentIndex === 101) {
                     clearImageDisplay(); // new
                     setTimeout(() => {
                         alert("You are halfway through the quiz. Please take a slightly longer break; press 'OK' when you are ready to continue. 🕒☕");
                         displayImage(); // new
                     }, 100);
-                } else if (progress % 12.5 === 0 && progress !== 100) {
+                } else if (currentIndex % 25 === 0 && currentIndex !== 200 && currentIndex !== 100) {
                     clearImageDisplay(); // new
                     setTimeout(() => {
                         alert("Please take a second to relax your eyes 👀 and mind 🧘‍♀️; press 'OK' when you are ready to continue.✨");
@@ -566,20 +583,12 @@
         }
     
         function nextImage() {
-            if (currentIndex < images.length) {
-                currentIndex++;
+            currentIndex++;
+            if (currentIndex < images.length+1) {
                 displayImage();
                 updateProgress();
             } else {
-                clearImageDisplay();
-                document.getElementById("10s-complete").remove();
-                document.getElementById("buttons-container").remove();
-                document.getElementById("submit-container").remove();
-                document.getElementById("table-container").remove();
                 
-                setTimeout(() => {
-                    alert("You have completed the quiz! 🎉🎉🎉 You can safely exit the quiz and your inputs are recorded. Thanks for your time and effort.");
-                }, 300);
                 
                 stopSpeedNavigation();
             }
@@ -600,39 +609,11 @@
     
         
 
-        function selectReal() {
-            selectedRealFake = 'Real';
-            document.getElementById('selected-value').innerText = 'Selected: Real';
-
-            // Apply styles to the buttons
-            document.getElementById('real-button').classList.add('selected');
-            document.getElementById('fake-button').classList.remove('selected');
-            document.getElementById('notsure-button').classList.remove('selected');
-        }
-
-        function selectFake() {
-            selectedRealFake = 'Fake';
-            document.getElementById('selected-value').innerText = 'Selected: Fake';
-
-            // Apply styles to the buttons
-            document.getElementById('fake-button').classList.add('selected');
-            document.getElementById('real-button').classList.remove('selected');
-            document.getElementById('notsure-button').classList.remove('selected');
-
-        }
-        function selectNotSure() {
-            selectedRealFake = 'NotSure';
-            document.getElementById('selected-value').innerText = 'Selected: Not Sure';
-
-            // Apply styles to the buttons
-            document.getElementById('fake-button').classList.remove('selected');
-            document.getElementById('real-button').classList.remove('selected');
-            document.getElementById('notsure-button').classList.add('selected');
-
-        }
+        
     
         function startTimer() {
-            timeRemaining = timerDuration;
+            timeRemaining = (currentIndex === 0) ? 600 : 13; // Set 600 seconds for first image, 13 otherwise
+            // timeRemaining = timerDuration;
             updateTimerDisplay();
 
             // Clear any existing timer interval
@@ -663,16 +644,16 @@
             timerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
         }
         
-        function clearSelection() {
-            selectedRealFake = null;
-            document.getElementById('selected-value').innerText = 'Selected: None';
+        // function clearSelection() {
+        //     selectedRealFake = null;
+        //     document.getElementById('selected-value').innerText = 'Selected: None';
 
-            // Remove the selected styles from the buttons
-            document.getElementById('real-button').classList.remove('selected');
-            document.getElementById('fake-button').classList.remove('selected');
-            document.getElementById('notsure-button').classList.remove('selected');
-            document.getElementById("10s-complete").innerText = "";
-        }
+        //     // Remove the selected styles from the buttons
+        //     document.getElementById('real-button').classList.remove('selected');
+        //     document.getElementById('fake-button').classList.remove('selected');
+        //     document.getElementById('notsure-button').classList.remove('selected');
+        //     document.getElementById("10s-complete").innerText = "";
+        // }
 
 
         function updateSliderLabel() {
@@ -683,19 +664,19 @@
 
             switch (value) {
                 case 1:
-                    description = 'Real';
+                    description = 'Definitely Real';
                     break;
                 case 2:
-                    description = '~Real';
+                    description = 'Probably Real';
                     break;
                 case 3:
                     description = 'Unsure';
                     break;
                 case 4:
-                    description = '~Fake';
+                    description = 'Probably Fake';
                     break;
                 case 5:
-                    description = 'Fake';
+                    description = 'Definitely Fake';
                     break;
             }
 
@@ -710,10 +691,10 @@
 
         function submitSelection() {
             
-            if (!selectedRealFake) {
-                alert("Please select Real or Fake.");
-                return;
-            }
+            // if (!selectedRealFake) {
+            //     alert("Please select Real or Fake.");
+            //     return;
+            // }
             
             
             
@@ -729,7 +710,7 @@
             }
             // Update the table values
             document.getElementById('file-value').innerText = file;
-            document.getElementById('real-fake-value').innerText = realFakeValue;
+            document.getElementById('real-fake-value').innerText = realFakeValueSlider;
             document.getElementById('progress-percentage-tb').innerText = progressValue;
             document.getElementById('user-name-value').innerText = userName;
             document.getElementById('slider-label').innerText = realFakeValueSlider;
@@ -741,13 +722,13 @@
             const tableData = {
                 userName: userName,
                 file: file,
-                realFakeValue: realFakeValue,
                 progressValue: progressValue,
                 realFakeValueSlider: realFakeValueSlider,
                 
             };
             nextImage();
-            clearSelection();
+            // clearSelection();
+            document.getElementById("10s-complete").innerText = "";
             fetch('/submit', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -758,7 +739,17 @@
             .catch(error => console.error("Error sending data to server:", error));
             document.getElementById("table-container").style.display = "none"; // Hide the table after submission, delete this line if you want to keep the table visible
             resetSlider();
-            
+            if (currentIndex === 201) {
+                clearImageDisplay();
+                document.getElementById("10s-complete").remove();
+                document.getElementById("slider-container").remove();
+                document.getElementById("submit-container").remove();
+                document.getElementById("table-container").remove();
+                
+                setTimeout(() => {
+                    alert("You have completed the quiz! 🎉🎉🎉 You can safely exit the quiz and your inputs are recorded. Thanks for your time and effort.");
+                }, 300);
+            }
         }
         
 
