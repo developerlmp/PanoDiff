@@ -19,8 +19,8 @@
 ---
 
 ## 🔥 News
-- **April 2025:** T2L accepted to **Transactions on Machine Learning Research (TMLR) 2025**! 🎉
-- This repository supersedes our previous work, **EZ-CLIP** [[EZ-CLIP GitHub]](https://github.com/Shahzadnit/EZ-CLIP.git), with enhanced methods and updated code.
+- **May 2025:** PanoDiff submitted to **ECAI 2025**! 🎉
+- This repository supersedes previous work, **PanoGAN** [[PanoGAN Paper]](https://www.mdpi.com/2313-433X/11/2/41), with advanced methods and updated code.
 
 ---
 
