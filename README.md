@@ -97,124 +97,88 @@ Sanyam Jain, Bruna Neves de Freitas, Andreas Basse-O'Connor, Alexandros	Iosifidi
 
 ## Installation
 
-1. **Clone the repository:**
+1. **Installation:**
    ```bash
-   git clone https://github.com/Shahzadnit/T2L.git
-   cd T2L
+   git clone https://github.com/s4nyam/PanoDiff.git
+   cd panodiff
    ```
 
 2. **Create a virtual environment:**
    ```bash
-   conda create -n t2l python=3.8
-   conda activate t2l
+   python3 -m venv venv
+   source venv/bin/activate
    pip install -r requirements.txt
    ```
 
 3. **Install PyTorch:**
-   Install PyTorch following instructions from [PyTorch's official site](https://pytorch.org/).
+   Install PyTorch following instructions from [PyTorch official site](https://pytorch.org/).
+
+**requirements.txt**
+```markdown
+h5py
+matplotlib
+natsort
+numpy
+opencv_contrib_python
+pandas
+scipy
+tqdm
+retinaface-pytorch
+diffusers
+basicSR
+einops
+nvitop
+flask
+firebase-admin
+pyngrok
+```
 
 ---
 
-## 🧪 Model Zoo
-
-All models utilize the **CLIP ViT-B/16** backbone and are trained on **Kinetics-400** unless otherwise specified.
-
-### 🔍 Zero-Shot Evaluation
-Models are trained on Kinetics-400 and evaluated directly on downstream datasets.
-
-| **Model**      | **Input** | **HMDB-51** | **UCF-101** | **Kinetics-600** | **Model Download** |
-|----------------|:---------:|:-----------:|:-----------:|:----------------:|:-------------------:|
-| **T2L (ViT-16)** | 8×224     | **52.9**     | **79.1**     | **70.1**           | [📥 Link](https://drive.google.com/file/d/19QNGgaZjPyq0yz7XJGFccS7MV09KMY_K/view?usp=drive_link) |
-
-### 🔀 Base-to-Novel Generalization
-Models are trained on base classes and evaluated on both base and novel classes.
-
-| **Dataset** | **Input** | **Base Acc.** | **Novel Acc.** | **Harmonic Mean (HM)** | **Model Download** |
-|-------------|:---------:|:-------------:|:---------------:|:-----------------------:|:-------------------:|
-| **Kinetics-400** | 8×224 | 73.1 | 60.6 | **66.3** | [📥 Link](https://drive.google.com/file/d/1q8rBkL0QKNTeJJihWkNUwm1eAGH_OY0U/view?usp=sharing) |
-| **HMDB-51**      | 8×224 | 77.0 | 58.2 | **66.3** | [📥 Link](https://drive.google.com/file/d/1hW2i6agAhpyFvoRgPcOki3coQHx-6oWN/view?usp=sharing) |
-| **UCF-101**      | 8×224 | 94.4 | 77.9 | **85.4** | [📥 Link](https://drive.google.com/file/d/16HTxwbqfi1N8BPVjfrvL6F_A4xLNt-zc/view?usp=sharing) |
-| **SSv2**         | 8×224 | 16.6 | 13.3 | **14.8** | [📥 Link](https://drive.google.com/file/d/1EtpET-s634JnHK7n57vrvqNpE7qH_dHq/view?usp=sharing) |
-
----
-
-## 🗂️ Data Preparation
-
-Pre-extract video frames for efficient training and evaluation using scripts in `Dataset_creation_scripts`.
-
-**Supported Datasets:**
-- 🎞️ [Kinetics-400/600](https://deepmind.com/research/open-source/open-source-datasets/kinetics/)
-- 📺 [UCF-101](http://crcv.ucf.edu/data/UCF101.php)
-- 🎬 [HMDB-51](http://serre-lab.clps.brown.edu/resource/hmdb-a-large-human-motion-database/)
-- 🎬 [Something-Something-v2](https://developer.qualcomm.com/software/something-something-video-dataset)
-
-**Steps:**
-1. Download datasets from their official websites.
-2. Extract frames:
-   ```bash
-   python Dataset_creation_scripts/extract_frames.py --dataset <dataset_name> --data_path <path_to_videos>
-   ```
-3. Update dataset paths in configuration files (`configs/<dataset>/*.yaml`).
+## 🧪 Model Zoo (Coming Soon!)
+Pretrained Models for PanoDiff and SR are avaialble here in table below:
 
 ---
 
 ## 🏋️ Training
 
-Train T2L with the provided configuration files:
-```bash
-python train.py --config configs/K-400/k400_train.yaml
-```
+Train PanoDiff and SR with the provided "how-to" files in each nested directories.
+
 
 **Training Details:**
-- **Backbone:** CLIP ViT-B/16
-- **Optimizer:** AdamW, learning rate 5e-5
-- **Epochs:** 50
-- **Batch Size:** 70
-- **Hardware:** Single NVIDIA A100 80GB GPU
+
+| Configuration      | Lowest            | Highest          |
+|--------------------|-------------------|------------------|
+| GPU               | RTX 6000 48GB × 1 | A100 80GB × 4    |
+| RAM               | 128 GB            | 256 GB           |
+| Train Batch       | 4                 | 16               |
+| Evaluation Batch  | 16                | 48               |
+| Input Resolution  | 256×128×3         | 256×128×3        |
 
 ---
 
-## 🧪 Evaluation
+## 🧪 Evaluation (Coming Soon!)
 
-Evaluate pre-trained models:
-```bash
-python test.py --config configs/ucf101/UCF_zero_shot_testing.yaml
-```
-
-**Evaluation Settings:**
-- **Zero-Shot:** HMDB-51, UCF-101, Kinetics-600
-- **Base-to-Novel:** Base and novel classes
-- **Few-Shot:** K={2,4,8,16} shots
 
 ---
 
-## 📖 Citation
+## 📖 Citation (Coming Soon!)
 
 If you find this work useful, please cite our paper:
 
 ```bibtex
-@article{
-ahmad2025tl,
-title={T2L: Efficient Zero-Shot Action Recognition with Temporal Token Learning},
-author={Shahzad Ahmad and Sukalpa Chanda and Yogesh S Rawat},
-journal={Transactions on Machine Learning Research},
-issn={2835-8856},
-year={2025},
-url={https://openreview.net/forum?id=WvgoxpGpuU},
-note={}
-}
+
 ```
 
 ---
 
 ## 🙏 Acknowledgments
 
-- Built upon [ActionCLIP](https://github.com/sallymmx/ActionCLIP).
 - Gratitude to the open-source community for datasets and tools.
-- Supported by Østfold University College and the University of Central Florida.
+- Together with Dept of Dentistry and Oral Health AU Denmark, Dept of Mathematics AU Denmark, and Computer Science Unit Tampere University Finland.
+- Computing resources were supported by ECE and MaLeCi Aarhus University, Denmark
 
 ---
 
-## 📜 License
+## 📜 License (Coming Soon!)
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
