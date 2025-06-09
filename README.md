@@ -4,15 +4,17 @@
 [![License](https://img.shields.io/badge/License-MIT-green)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-orange)](https://pytorch.org/)
+[![pyngrok](https://img.shields.io/badge/PyNgRok-7.2%2B-yellow)](https://pytorch.org/)
+
 
 <p align="center">
-  <img src="images/teasure.png" alt="T2L Teaser" width="800"/>
+  <img src="https://dl3.pushbulletusercontent.com/wvClGg717OZvK86TCILc0EUC5ckEHvGn/image.png" alt="PanoDiff Teaser" width="800"/>
 </p>
 
-> 📢 Official PyTorch implementation of the **TMLR 2025** accepted paper:  
-> **T2L: Efficient Zero-Shot Action Recognition with Temporal Token Learning**  
-> Shahzad Ahmad, Sukalpa Chanda, Yogesh S. Rawat  
-> [[OpenReview]](https://openreview.net/forum?id=WvgoxpGpuU) | [[Code]](https://github.com/Shahzadnit/T2L)
+> 📢 Official PyTorch implementation of the **ECAI 2025** accepted paper:  
+> **PanoDiff-SR: Synthesizing Dental Panoramic Radiographs using Diffusion and Super-resolution**  
+> Sanyam Jain, Andreas Basse-O-Conner, Alexandros Iosifidis. Ruben Pauwels  
+> [[Demo]](https://github.com/s4nyam/PanoDiff) | [[Code]](https://github.com/s4nyam/PanoDiff)
 
 ---
 
