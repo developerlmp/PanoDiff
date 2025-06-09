@@ -135,8 +135,10 @@ pyngrok
 
 ---
 
-## Model Zoo (Coming Soon!)
-Pretrained Models for PanoDiff and SR are avaialble here in table below:
+## Model Zoo
+Pretrained Models for PanoDiff and SR are avaialble here in table below: 
+
+(Coming Soon!)
 
 ---
 
@@ -157,12 +159,15 @@ Train PanoDiff and SR with the provided "how-to" files in each nested directorie
 
 ---
 
-## Evaluation (Coming Soon!)
+## Evaluation
 
+(Coming Soon!)
 
 ---
 
-## Citation (Coming Soon!)
+## Citation
+
+(Coming Soon!)
 
 If you find this work useful, please cite our paper:
 
@@ -180,5 +185,6 @@ If you find this work useful, please cite our paper:
 
 ---
 
-## License (Coming Soon!)
+## License
 
+(Coming Soon!)
