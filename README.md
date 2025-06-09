@@ -135,12 +135,12 @@ pyngrok
 
 ---
 
-## 🧪 Model Zoo (Coming Soon!)
+## Model Zoo (Coming Soon!)
 Pretrained Models for PanoDiff and SR are avaialble here in table below:
 
 ---
 
-## 🏋️ Training
+## Training
 
 Train PanoDiff and SR with the provided "how-to" files in each nested directories.
 
@@ -157,12 +157,12 @@ Train PanoDiff and SR with the provided "how-to" files in each nested directorie
 
 ---
 
-## 🧪 Evaluation (Coming Soon!)
+## Evaluation (Coming Soon!)
 
 
 ---
 
-## 📖 Citation (Coming Soon!)
+## Citation (Coming Soon!)
 
 If you find this work useful, please cite our paper:
 
@@ -172,7 +172,7 @@ If you find this work useful, please cite our paper:
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Gratitude to the open-source community for datasets and tools.
 - Together with Dept of Dentistry and Oral Health AU Denmark, Dept of Mathematics AU Denmark, and Computer Science Unit Tampere University Finland.
@@ -180,5 +180,5 @@ If you find this work useful, please cite our paper:
 
 ---
 
-## 📜 License (Coming Soon!)
+## License (Coming Soon!)
 
