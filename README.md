@@ -75,11 +75,11 @@ For the top-most figure in this readme:
 
 ---
 
-## 📄 Paper
-**T2L: Efficient Zero-Shot Action Recognition with Temporal Token Learning**  
-Shahzad Ahmad, Sukalpa Chanda, Yogesh S. Rawat  
-*Transactions on Machine Learning Research (TMLR), April 2025*  
-[[OpenReview]](https://openreview.net/forum?id=WvgoxpGpuU) | [[PDF]](https://openreview.net/pdf?id=WvgoxpGpuU)
+## 📄 Visiblity (Need to update later)
+**PanoDiff-SR: Synthesizing Dental Panoramic Radiographs using Diffusion and Super-resolution**  
+Sanyam Jain, Bruna Neves de Freitas, Andreas Basse-O'Connor, Alexandros	Iosifidis, Ruben Pauwels
+*European Conference on Artificial Intelligence (ECAI) 2025*  
+[[GitHub]](https://github.com/s4nyam/panodiff) | [[PDF]](https://github.com/s4nyam/panodiff) | [[Project]](https://github.com/s4nyam/panodiff) | [[Results]](https://github.com/s4nyam/panodiff) | [[TarBall]](https://github.com/s4nyam/panodiff) 
 
 ---
 
