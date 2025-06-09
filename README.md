@@ -32,7 +32,7 @@
 - **Real-vs-Fake Quiz:** A time-limited human in the loop activity to identify a given image as real or synthetic? Six dentists with varying experience were invited to play the quiz for 200 images (100 real and 100 fake).
 
 <p align="center">
-  <img src="https://dl3.pushbulletusercontent.com/zu86EKZKoUyEMb84i8AmwbSd9nsM5knc/image.png" alt="Efficiency Comparison" width="800"/>
+  <img src="https://dl3.pushbulletusercontent.com/zu86EKZKoUyEMb84i8AmwbSd9nsM5knc/image.png" alt="Selected Examples" width="800"/>
   <br>
   <em>Selected **synthetic examples** from our work that fooled most dentists.</em>
 </p>
@@ -41,11 +41,20 @@
 ## 📊 Dataset
 
 <p align="center">
-  <img src="images/attension_map.png" alt="T2L Attention Map" width="800"/>
+  <img src="https://dl3.pushbulletusercontent.com/fNlF9Ytp2g0cGoIaGoekrZmB550SMKZh/image.png" alt="T sne" width="500"/>
 </p>
 
-Above are **temporal attention maps** for various video actions, showing how **T2L learns dynamic regions** crucial for action recognition over time. These maps demonstrate the effectiveness of our **temporal token learning** strategy.
+T-distributed stochastic neighbor embedding (t-SNE) plot of 500 random images picked from each source dataset.
 
+**Table**: Overview of dental radiography datasets used in our study. * indicates that the dataset was recently updated with 1500 more images, but we accessed it when it had 500 images. ~ indicates varying sizes in the dataset within the given resolution range. Abbreviations: ADLD – A dual-labeled dataset, DENTEX – Dental Enumeration and Diagnosis on Panoramic X-rays, TSXK – Teeth Segmentation on dental X-ray images, TUFTS – Tufts Dental Database, USPFORP – São Paulo dataset.
+
+| Abbr.    | Images | Format | Availability | Year | Country | Resolution |
+|---|---|---|---|---|---|---|
+| [ADLD](https://www.kaggle.com/datasets/zwbzwb12341234/a-dual-labeled-dataset) | 500* | png | Kaggle | 2024 | China | ~2940×1435 or ~987×478 |
+| [DENTEX](https://zenodo.org/records/7812323#.ZDQE1uxBwUG) | 3903 | png | Zenodo | 2023 | Switzerland | ~2950×1316 or ~1976×976 |
+| [TSXK](https://www.kaggle.com/datasets/humansintheloop/teeth-segmentation-on-dental-x-ray-images) | 1196 | png | Kaggle | 2023 | DR Congo | 2041×1024 |
+| [TUFTS](https://tdd.ece.tufts.edu/) | 1000 | jpg | On Request | 2022 | USA | 1615×840 |
+| [USPFORP](https://pubmed.ncbi.nlm.nih.gov/38632036/) | 936 | jpg | On Request | 2024 | Brazil | 2903×1536 |
 
 ---
 
