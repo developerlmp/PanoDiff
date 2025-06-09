@@ -88,6 +88,7 @@ Sanyam Jain, Bruna Neves de Freitas, Andreas Basse-O'Connor, Alexandros	Iosifidi
 - [Model Zoo](#model-zoo)
 - [Training](#training)
 - [Evaluation](#evaluation)
+- [Results](#results)
 - [Citation](#citation)
 - [Acknowledgments](#acknowledgments)
 - [License](#license)
@@ -161,6 +162,10 @@ Train PanoDiff and SR with the provided "how-to" files in each nested directorie
 ## Evaluation
 
 (Coming Soon!)
+
+---
+
+## Results
 
 ---
 
