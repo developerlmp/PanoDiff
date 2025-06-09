@@ -32,9 +32,9 @@
 - **Real-vs-Fake Quiz:** A time-limited human in the loop activity to identify a given image as real or synthetic? Six dentists with varying experience were invited to play the quiz for 200 images (100 real and 100 fake).
 
 <p align="center">
-  <img src="images/efficency.png" alt="Efficiency Comparison" width="800"/>
+  <img src="https://dl3.pushbulletusercontent.com/zu86EKZKoUyEMb84i8AmwbSd9nsM5knc/image.png" alt="Efficiency Comparison" width="800"/>
   <br>
-  <em>Comparison of T2L with ActionCLIP, XCLIP, and ViFi-CLIP on tunable parameters, GFLOPs, total parameters, and throughput.</em>
+  <em>Selected synthetic examples from our work that fooled most dentists.</em>
 </p>
 
 
