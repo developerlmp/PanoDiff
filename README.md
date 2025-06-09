@@ -95,7 +95,7 @@ Sanyam Jain, Bruna Neves de Freitas, Andreas Basse-O'Connor, Alexandros	Iosifidi
 
 ---
 
-## ⚙️ Installation
+## Installation
 
 1. **Clone the repository:**
    ```bash
