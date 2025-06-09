@@ -13,7 +13,7 @@
 
 > 📢 Official PyTorch implementation of the **ECAI 2025** accepted paper:  
 > **PanoDiff-SR: Synthesizing Dental Panoramic Radiographs using Diffusion and Super-resolution**  
-> Sanyam Jain, Andreas Basse-O-Conner, Alexandros Iosifidis. Ruben Pauwels  
+> Sanyam	Jain, Bruna	Neves de Freitas, Andreas	Basse-O'Connor, Alexandros	Iosifidis, Ruben	Pauwels
 > [[Demo]](https://github.com/s4nyam/PanoDiff) | [[Code]](https://github.com/s4nyam/PanoDiff)
 
 ---
