@@ -25,11 +25,11 @@
 ---
 
 ## 🌟 Highlights
-- **Lightweight Design:** Only **5.2M learnable parameters**, 25x fewer than prior approaches, trainable on a single GPU.
-- **Temporal Token Learning (TTL):** Captures cross-frame motion dynamics without altering the CLIP architecture.
-- **Temporal Feature Diversity (TFD) Loss:** Promotes diverse temporal embeddings for robust action recognition.
-- **Top Performance:** Achieves state-of-the-art results in **zero-shot**, **few-shot**, and **base-to-novel generalization** tasks.
-- **Frozen CLIP Backbone:** Maintains generalization by keeping pre-trained CLIP weights frozen.
+- **Modular Design:** Two learning algorithms are used **Diffusion (DDPM, DDIM)** and **Super-Resolution (ST-transformer)** trained independently.
+- **Dataset:** Uses **five public datasets** with varying preprocessing and postprocessing inlcuding resize, rotation and crop.
+- **Diffusion:** Uses simple denoisinng diffusion probabilistic model for syntehsis with a attention-aware UNet backbone.
+- **SR:** Built upon **HAT-SR** with novel losses - pixel-wise loss (L_1), perceptual loss (L_percep), and adversarial loss (L_GAN).
+- **Real-vs-Fake Quiz:** A time-limited human in the loop activity to identify a given image as real or synthetic? Six dentists with varying experience were invited to play the quiz for 200 images (100 real and 100 fake).
 
 <p align="center">
   <img src="images/efficency.png" alt="Efficiency Comparison" width="800"/>
