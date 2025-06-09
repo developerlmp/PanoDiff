@@ -34,11 +34,11 @@
 <p align="center">
   <img src="https://dl3.pushbulletusercontent.com/zu86EKZKoUyEMb84i8AmwbSd9nsM5knc/image.png" alt="Efficiency Comparison" width="800"/>
   <br>
-  <em>Selected synthetic examples from our work that fooled most dentists.</em>
+  <em>Selected **synthetic examples** from our work that fooled most dentists.</em>
 </p>
 
 
-## 👀 Qualitative Analysis: Attention Maps
+## 📊 Dataset
 
 <p align="center">
   <img src="images/attension_map.png" alt="T2L Attention Map" width="800"/>
