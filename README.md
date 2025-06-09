@@ -20,7 +20,7 @@
 
 ## 🔥 News
 - **May 2025:** PanoDiff submitted to **ECAI 2025**! 🎉
-- **Oct 2022:** Project Initialised 🎉
+- **Oct 2024:** Project Initialised.
 ---
 
 ## 🌟 Highlights
