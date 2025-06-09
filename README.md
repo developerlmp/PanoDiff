@@ -20,8 +20,7 @@
 
 ## 🔥 News
 - **May 2025:** PanoDiff submitted to **ECAI 2025**! 🎉
-- This repository supersedes previous work, **PanoGAN** [[PanoGAN Paper]](https://www.mdpi.com/2313-433X/11/2/41), with advanced methods and updated code.
-
+- **Oct 2022:** Project Initialised 🎉
 ---
 
 ## 🌟 Highlights
