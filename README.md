@@ -61,14 +61,17 @@ T-distributed stochastic neighbor embedding (t-SNE) plot of 500 random images pi
 ## 🧠 Overview
 
 <p align="center">
-  <img src="images/T2L.jpg" alt="T2L Architecture" width="800"/>
+  <img src="https://dl3.pushbulletusercontent.com/CcSvKjSuqpj8wKQwb9XBlE4l9Br129wS/image.png" alt="PanoDiff Architecture" width="800"/>
+  <br>
+  <em>Figure: General principle of synthetic image generation through manifold representation. Consider a dataset of images {x<sub>k</sub>}<sub>k=1</sub><sup>n</sup>, where x<sub>k</sub> ∼ p(x). These images serve as samples from the target distribution p(x). A best sampler G<sub>θ</sub> is one such that x̂ = G<sub>θ</sub>(z), where z ∼ 𝒩(0, I), to produce high-quality samples resembling the true data distribution p.</em>
 </p>
 
-**T2L** adapts CLIP for efficient video action recognition by introducing:
-- **Temporal Token Learning (TTL):** Lightweight tokens model temporal relations across video frames.
-- **Temporal Feature Diversity (TFD) Loss:** Enhances motion cue learning through diverse temporal embeddings.
-
-With minimal computational overhead, T2L excels in **zero-shot**, **few-shot**, and **base-to-novel** settings across multiple benchmarks. For qualitative insights, see attention map visualizations in the [paper](https://openreview.net/pdf?id=WvgoxpGpuU) (Appendix A.7), showcasing T2L's robustness on out-of-distribution scenarios.
+For the top-most figure in this readme:
+<p align="center">
+  <img src="https://dl3.pushbulletusercontent.com/wvClGg717OZvK86TCILc0EUC5ckEHvGn/image.png" alt="PanoDiff Working Process" width="800"/>
+  <br>
+  <em>Figure: Working of PanoDiff in three key steps: (1) In the forward phase, noise is added to the input image x<sub>t=0</sub> over t=1000 time steps, following a β-schedule (slow-start and fast-finish). The plot on the right shows pixel variation metrics converging to 0.5 because the image is pure noise at t=1000. (2) The reverse phase (in left) involves training a U-Net (using L<sub>1</sub> loss), shown on the left, such that it takes a random source image with a random noisy image at t. The trained U-Net predicts most of the noise given a noisy image at t. For comparison, an old method is shown (in right), which performs denoising through a slow, stochastic, step-by-step process, requiring hundreds to thousands of iterations to gradually remove noise using the frozen U-Net from the previous step (on the left). (3) The image generation process in PanoDiff involves iteratively predicting and removing noise from a noisy image x<sub>t=0</sub> using a frozen U-Net, resulting in a slightly less noisy image. The resulting image is added with noise and fed to the U-Net, which again predicts and removes noise. This process continues for <em>inference</em> time steps.</em>
+</p>
 
 ---
 
