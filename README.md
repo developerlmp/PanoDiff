@@ -86,7 +86,6 @@ Sanyam Jain, Bruna Neves de Freitas, Andreas Basse-O'Connor, Alexandros	Iosifidi
 ## 📑 Table of Contents
 - [Installation](#installation)
 - [Model Zoo](#model-zoo)
-- [Data Preparation](#data-preparation)
 - [Training](#training)
 - [Evaluation](#evaluation)
 - [Citation](#citation)
