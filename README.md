@@ -167,6 +167,12 @@ Train PanoDiff and SR with the provided "how-to" files in each nested directorie
 
 ## Results
 
+<p align="center">
+  <img src="https://dl3.pushbulletusercontent.com/Z4p3O7Esis2b0kpeELr1jCW0cqzf9kRD/image.png" alt="PanoDiffSR Epochs" width="800"/>
+  <br>
+  <em>Figure: Comparison of generated PRs across epochs. Each column represents a different epoch from left to right, showing the images generated using same unique seed per row.</em>
+</p>
+
 ---
 
 ## Citation
