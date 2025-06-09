@@ -175,9 +175,21 @@ Train PanoDiff and SR with the provided "how-to" files in each nested directorie
 
 
 <p align="center">
-  <img src="https://dl3.pushbulletusercontent.com/IWhTJVlMsVK41NLhMmhx5sQREorwb4j6/image.png" alt="Results from Dentists" width="800"/>
+  <img src="https://dl3.pushbulletusercontent.com/IWhTJVlMsVK41NLhMmhx5sQREorwb4j6/image.png" alt="Results from Dentists" width="900"/>
   <br>
   <em>Table: Real vs synthetic image combinations and respective Fréchet inception distance (FID). Lower scores indicate greater similarity. <br/> Figure: Pie charts for each observer showing distribution of correct and incorrect decisions. ‘Fully’ and ‘partially’ refers to the level of certainty indicated by the observer for a given answer, as described in the text.</em>
+</p>
+
+<p align="center">
+  <img src="https://dl3.pushbulletusercontent.com/Md1JLGjyrRviPOF8ES7PmAKFVMp9V7uN/image.png" alt="TP,TN,FP,FN" width="800"/>
+  <br>
+  <em>Figure: Examples of PRs from expert evaluation. Within each category, the first row corresponds to fully certain (FC) and the second row to partially certain (PC) responses. Examples were selected for each category based on the majority of the observers’ assessments.</em>
+</p>
+
+<p align="center">
+  <img src="https://dl3.pushbulletusercontent.com/woqS84fuYDbBVLZwLX6LV3biAeQxyvS2/image.png" alt="AMs" width="800"/>
+  <br>
+  <em>Figure: Attention maps generated using a trained ViT for two classes - top three rows for real images and bottom three rows for synthetic images. The confidence value ’C’ represents the ViT classifier’s output and ranges from 0 (for synthetic) to 1 (for real). Prediction values in red correspond to incorrect classification..</em>
 </p>
 
 ---
