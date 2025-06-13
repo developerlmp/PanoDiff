@@ -78,7 +78,7 @@ For the top-most figure in this readme:
 **PanoDiff-SR: Synthesizing Dental Panoramic Radiographs using Diffusion and Super-resolution**  
 Sanyam Jain, Bruna Neves de Freitas, Andreas Basse-O'Connor, Alexandros	Iosifidis, Ruben Pauwels
 *European Conference on Artificial Intelligence (ECAI) 2025*  
-[[GitHub]](https://github.com/s4nyam/panodiff) | [[PDF]](https://github.com/s4nyam/panodiff) | [[Project]](https://github.com/s4nyam/panodiff) | [[Results]](https://github.com/s4nyam/panodiff) | [[TarBall]](https://github.com/s4nyam/panodiff) 
+[[GitHub]](https://github.com/s4nyam/panodiff) | [[PDF]](https://github.com/s4nyam/panodiff) | [[Project]](https://github.com/s4nyam/panodiff) | [[Results]](https://github.com/s4nyam/panodiff) | [[TarBall]](https://aarhusuniversitet-my.sharepoint.com/:f:/r/personal/au775886_uni_au_dk/Documents/Pano%20Diff%20(Public)?csf=1&web=1&e=3n9Chz) 
 
 ---
 
