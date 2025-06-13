@@ -141,7 +141,7 @@ Pretrained Models for PanoDiff and SR are avaialble here in table below:
 We release pretrained models for PanoDiff and SR-transformer, you can load these models and use it for independent purposes.
 
 ### Diffusion Models
-| Configuration      | Highest          |
+| Configuration      | File          |
 |--------------------|------------------|
 | Epoch 11               | [Link](https://aarhusuniversitet-my.sharepoint.com/:u:/r/personal/au775886_uni_au_dk/Documents/Pano%20Diff%20(Public)/ModelZoo/PanoDiff_pretrained/ddpm-model-ep11.pth?csf=1&web=1&e=DzbeLf)    |
 | Epoch 33      | [Link](https://aarhusuniversitet-my.sharepoint.com/:u:/r/personal/au775886_uni_au_dk/Documents/Pano%20Diff%20(Public)/ModelZoo/PanoDiff_pretrained/ddpm-model-ep33.pth?csf=1&web=1&e=jHa32E) | 
@@ -152,13 +152,10 @@ We release pretrained models for PanoDiff and SR-transformer, you can load these
 
 
 ### SR Models
-| Configuration      | Lowest            | Highest          |
-|--------------------|-------------------|------------------|
-| GPU               | RTX 6000 48GB × 1 | A100 80GB × 4    |
-| RAM               | 128 GB            | 256 GB           |
-| Train Batch       | 4                 | 16               |
-| Evaluation Batch  | 16                | 48               |
-| Input Resolution  | 256×128×3         | 256×128×3        |
+| Configuration      | File           |
+|--------------------|------------------|
+| Real_HAT_GAN_SRx4_finetuned               | [Link](https://aarhusuniversitet-my.sharepoint.com/:u:/r/personal/au775886_uni_au_dk/Documents/Pano%20Diff%20(Public)/ModelZoo/SR_pretrained/trained_models/Real_HAT_GAN_SRx4_finetuned.pth?csf=1&web=1&e=RDUFEI)    |
+
 
 ---
 
