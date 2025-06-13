@@ -138,7 +138,10 @@ pyngrok
 ## Model Zoo
 Pretrained Models for PanoDiff and SR are avaialble here in table below: 
 
-(Coming Soon!)
+We release pretrained models for PanoDiff and SR-transformer, you can load these models and use it for independent purposes.
+
+SR Models
+
 
 ---
 
