@@ -19,7 +19,8 @@
 ---
 
 ## 🔥 News
-- **June 2025:** Got rebuttal Borderline Accept (6), Borderline Accept (6), Borderline Reject (5)**! 🤞
+- **June 2025:** Submitted the replies on EasyChair. Next update is on 10th July 2025.
+- **June 2025:** Got rebuttal - Borderline Accept (6), Borderline Accept (6), Borderline Reject (5) 🤞
 - **May 2025:** PanoDiff submitted to **ECAI 2025**! 🎉
 - **Oct 2024:** Project Initialised.
 ---
