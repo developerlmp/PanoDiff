@@ -11,7 +11,7 @@ from sklearn.metrics import roc_curve
 app = Flask(__name__)
 
 # Set the Ngrok auth token
-ngrok.set_auth_token("2rajSx0XyC3PlZszTVt7YPtXt6u_2bxHDMM8QtKLQmffr5ZPm") # rj2298 ID
+ngrok.set_auth_token("_") # rj2298 ID
 
 # Open an HTTP tunnel on the specified port
 PORT = 8041
