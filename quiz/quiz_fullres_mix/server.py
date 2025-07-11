@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 # Set the Ngrok auth token (ensure you have your token here)
 # ngrok.set_auth_token("2rz05j4SFJLrSt48IWnNIXSmWgd_6vjhry8PfRZjHQRDgARYQ") # iitj ID
-ngrok.set_auth_token("2rCwrD8WuljsKpx7ypx03wvnw5q_4sZT1zEPYFLhfWKtckLoH") # AU ID
+ngrok.set_auth_token("_") # AU ID
 
 
 # Open an HTTP tunnel on the specified port
