@@ -207,12 +207,18 @@ Train PanoDiff and SR with the provided "how-to" files in each nested directorie
 
 ## Citation
 
-(Coming Soon!)
-
 If you find this work useful, please cite our paper:
 
 ```bibtex
-
+@misc{jain2025panodiffsrsynthesizingdentalpanoramic,
+      title={PanoDiff-SR: Synthesizing Dental Panoramic Radiographs using Diffusion and Super-resolution}, 
+      author={Sanyam Jain and Bruna Neves de Freitas and Andreas Basse-OConnor and Alexandros Iosifidis and Ruben Pauwels},
+      year={2025},
+      eprint={2507.09227},
+      archivePrefix={arXiv},
+      primaryClass={eess.IV},
+      url={https://arxiv.org/abs/2507.09227}, 
+}
 ```
 
 ---
