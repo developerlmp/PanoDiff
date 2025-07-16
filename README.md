@@ -228,7 +228,7 @@ If you find this work useful, please cite our paper:
 
 We release several offline-material for reproducing the experiments and results (but not limited to). These downloads will also be useuful if you want to build on top of this work. Please consider to use the citation code above for future work.
 
-[Diffusion Models📥](https://your-download-url.com)
+[Diffusion Models📥](https://archive.org/download/panodiff/trained_models/)
 
 [SR Models📥](https://archive.org/download/panodiff/experiments/)
 
