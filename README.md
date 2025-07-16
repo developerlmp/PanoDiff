@@ -230,7 +230,7 @@ We release several offline-material for reproducing the experiments and results 
 
 [Diffusion Models📥](https://your-download-url.com)
 
-[SR Models📥](https://your-download-url.com)
+[SR Models📥](https://archive.org/download/panodiff/experiments/)
 
 ---
 
