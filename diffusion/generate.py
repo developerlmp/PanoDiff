@@ -61,7 +61,7 @@ for each_seed in range(seedvalue):
         parser.add_argument("--resolution", type=int, default=128)
         parser.add_argument("--pretrained_model_path",
                             type=str,
-                            default="trained_models/ddpm-model-ep574.pth",
+                            default="/content/PanoDiff/diffusion/trained_models/ddpm-model-ep110.pth",
                             help="Path to pretrained model")
         parser.add_argument("--eval_batch_size", type=int, default=32)
         parser.add_argument('--use_flash_attn', action='store_true')
