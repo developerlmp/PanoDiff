@@ -22,10 +22,10 @@ def main(args,seedpass):
     noise_scheduler = DDIMScheduler(num_train_timesteps=n_timesteps,
                                     beta_schedule="cosine")
 
-    pretrained = torch.load(args.pretrained_model_path,map_location="cuda:7")["ema_model_state"]
+    pretrained = torch.load(args.pretrained_model_path,map_location="cuda:0")["ema_model_state"]
     model.load_state_dict(pretrained, strict=False)
 
-    device = torch.device("cuda:7" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     model = model.to(device)
     
     model.eval()
