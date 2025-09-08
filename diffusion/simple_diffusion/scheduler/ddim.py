@@ -122,7 +122,7 @@ class DDIMScheduler:
         num_inference_steps=50,
         device=None,
     ):
-        device = device or ("cuda:7" if torch.cuda.is_available() else "cpu")
+        device = device or ("cuda:0" if torch.cuda.is_available() else "cpu")
         image = torch.randn(
             (batch_size, model.in_channels, model.sample_size[0], model.sample_size[1]),
             generator=generator,
