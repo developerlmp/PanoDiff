@@ -14,3 +14,5 @@ nvitop
 flask
 firebase-admin
 pyngrok
+torchinfo
+webdataset
