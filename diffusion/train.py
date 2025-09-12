@@ -39,7 +39,7 @@ def _grayscale_to_rgb(img):
     return img
 
 def main(args):
-    device = torch.device("cuda:3" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     model = UNet(3, image_size=(args.resolution, 2*args.resolution), hidden_dims=[64, 128, 256, 512],
                  use_flash_attn=args.use_flash_attn)
     noise_scheduler = DDIMScheduler(num_train_timesteps=n_timesteps,
@@ -119,7 +119,7 @@ def main(args):
 
     summary(model, [(1, 3, args.resolution, 2 * args.resolution), (1,)], verbose=1)
 
-    scaler = GradScaler('cuda:3',enabled=args.fp16_precision)
+    scaler = GradScaler('cuda:0',enabled=args.fp16_precision)
     global_step = 0
     losses = []
     for epoch in range(args.num_epochs):
@@ -140,7 +140,7 @@ def main(args):
                                                      timesteps)
 
             optimizer.zero_grad()
-            with autocast('cuda:3',enabled=args.fp16_precision):
+            with autocast('cuda:0',enabled=args.fp16_precision):
                 noise_pred = model(noisy_images, timesteps)["sample"]
                 loss = F.l1_loss(noise_pred, noise)
 
